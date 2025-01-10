@@ -15,9 +15,9 @@ public class CategoriasController : ControllerBase
     }
 
     [HttpGet("produtos")]
-    public ActionResult<IEnumerable<Categoria>> GetCategoriasProdutos()
+    public async Task<ActionResult<IEnumerable<Categoria>>> GetCategoriasProdutos()
     {
-        var listacategorias = _context.Categorias.Include(produtoCategoria=> produtoCategoria.Produtos).ToList();
+        var listacategorias = await _context.Categorias.Include(produtoCategoria=> produtoCategoria.Produtos).AsNoTracking().ToListAsync();
         if (listacategorias is null)
             return NotFound();
 
@@ -25,9 +25,9 @@ public class CategoriasController : ControllerBase
     }
 
     [HttpGet]
-    public ActionResult<IEnumerable<Categoria>> Get()
+    public async Task<ActionResult<IEnumerable<Categoria>>> Get()
     {
-        var listacategorias = _context.Categorias.ToList();
+        var listacategorias = await _context.Categorias.AsNoTracking().ToListAsync();
         if (listacategorias is null)
             return NotFound();
 
@@ -37,7 +37,7 @@ public class CategoriasController : ControllerBase
     [HttpGet("{id:int}", Name = "ObterCategoria")]
     public ActionResult<Categoria> GetById(int id)
     {
-        var categoriaById = _context.Categorias.FirstOrDefault(categoria => categoria.CategoriaId == id);
+        var categoriaById = _context.Categorias.AsNoTracking().FirstOrDefault(categoria => categoria.CategoriaId == id);
         if (categoriaById is null)
             return NotFound("Categoria não encontrado");
 
