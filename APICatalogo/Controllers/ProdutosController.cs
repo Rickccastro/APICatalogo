@@ -25,7 +25,7 @@ public class ProdutosController : ControllerBase
         return Ok(listaProdutos);
     }
     [HttpGet("{id}", Name = "ObterProduto")]
-    public async Task<ActionResult<Produto>> GetByIdAsync([BindRequired]int id)
+    public async Task<ActionResult<Produto>> GetByIdAsync(int id)
     {
         var produtoById = await _context.Produtos.AsNoTracking().FirstOrDefaultAsync(produto => produto.ProdutoId == id);
         if (produtoById is null)
@@ -34,9 +34,9 @@ public class ProdutosController : ControllerBase
         return Ok(produtoById);
     }
     [HttpPost]
-    public ActionResult CadastrarProduto(Produto produto)
+    public ActionResult CadastrarProduto([FromBody]Produto produto)
     {
-        if (produto is null)
+        if (!ModelState.IsValid)
             return BadRequest();
         _context.Produtos!.Add(produto);
 
