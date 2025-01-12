@@ -3,3 +3,6 @@ bin/
 obj/
 *.user
 *.suo
+launchSettings.json
+appsettings.json 
+appsettings.Development.json 
