@@ -15,6 +15,7 @@ public class CategoriasController : ControllerBase
     }
 
     [HttpGet("produtos")]
+    []
     public async Task<ActionResult<IEnumerable<Categoria>>> GetCategoriasProdutos()
     {
         var listacategorias = await _context.Categorias.Include(produtoCategoria=> produtoCategoria.Produtos).AsNoTracking().ToListAsync();

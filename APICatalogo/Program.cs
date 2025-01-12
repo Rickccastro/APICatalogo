@@ -1,10 +1,12 @@
 using APICatalogo.Context;
 using APICatalogo.Extensions;
+using APICatalogo.Filters;
 using Microsoft.EntityFrameworkCore;
 using System.Text.Json.Serialization;
 
 var builder = WebApplication.CreateBuilder(args);
 
+builder.Services.AddScoped<ApiLoggingFilter>();
 
 builder.Services.AddControllers().
     AddJsonOptions(options =>
