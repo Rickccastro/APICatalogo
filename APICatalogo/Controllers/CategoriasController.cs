@@ -1,4 +1,5 @@
 ﻿using APICatalogo.Context;
+using APICatalogo.Filters;
 using APICatalogo.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -15,7 +16,7 @@ public class CategoriasController : ControllerBase
     }
 
     [HttpGet("produtos")]
-    []
+    [ServiceFilter(typeof(ApiLoggingFilter))]
     public async Task<ActionResult<IEnumerable<Categoria>>> GetCategoriasProdutos()
     {
         var listacategorias = await _context.Categorias.Include(produtoCategoria=> produtoCategoria.Produtos).AsNoTracking().ToListAsync();

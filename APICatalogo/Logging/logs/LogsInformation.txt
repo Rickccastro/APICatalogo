@@ -1,0 +1,25 @@
+Information:ListeningOnAddress -Now listening on: https://localhost:7283
+Information:ListeningOnAddress -Now listening on: http://localhost:5119
+Information:0 -Application started. Press Ctrl+C to shut down.
+Information:0 -Hosting environment: Development
+Information:0 -Content root path: D:\DEV\VISUAL STUDIO C\trabalhos\APICatalogo\APICatalogo
+Information:0 -Executando OnActionExecuting22:17:54
+Information:0 -////////////////////////////////
+Information:0 -ModelState:True
+Information:Microsoft.EntityFrameworkCore.Database.Command.CommandExecuted -Executed DbCommand (74ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT `c`.`CategoriaId`, `c`.`ImageUrl`, `c`.`Nome`, `p`.`ProdutoId`, `p`.`CategoriaId`, `p`.`DataCadastro`, `p`.`Descricao`, `p`.`Estoque`, `p`.`ImageUrl`, `p`.`Nome`, `p`.`Preco`
+FROM `Categorias` AS `c`
+LEFT JOIN `Produto` AS `p` ON `c`.`CategoriaId` = `p`.`CategoriaId`
+ORDER BY `c`.`CategoriaId`
+Information:0 -Executando OnActionExecuted22:17:56
+Information:0 -////////////////////////////////
+Information:0 -ModelState:True
+Warning:Microsoft.EntityFrameworkCore.Query.RowLimitingOperationWithoutOrderByWarning -The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+Information:Microsoft.EntityFrameworkCore.Database.Command.CommandExecuted -Executed DbCommand (20ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT `p`.`ProdutoId`, `p`.`CategoriaId`, `p`.`DataCadastro`, `p`.`Descricao`, `p`.`Estoque`, `p`.`ImageUrl`, `p`.`Nome`, `p`.`Preco`
+FROM `Produto` AS `p`
+LIMIT @__p_0
+Information:Microsoft.EntityFrameworkCore.Database.Command.CommandExecuted -Executed DbCommand (2ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT `p`.`ProdutoId`, `p`.`CategoriaId`, `p`.`DataCadastro`, `p`.`Descricao`, `p`.`Estoque`, `p`.`ImageUrl`, `p`.`Nome`, `p`.`Preco`
+FROM `Produto` AS `p`
+LIMIT @__p_0

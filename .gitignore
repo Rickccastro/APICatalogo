@@ -3,6 +3,7 @@ bin/
 obj/
 *.user
 *.suo
-launchSettings.json
-appsettings.json 
-appsettings.Development.json 
+APICatalogo/Properties/launchSettings.json
+APICatalogo/appsettings.Development.json
+APICatalogo/appsettings.json
+
