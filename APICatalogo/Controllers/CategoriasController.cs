@@ -1,9 +1,6 @@
-﻿using APICatalogo.Context;
-using APICatalogo.Filters;
-using APICatalogo.Models;
+﻿using APICatalogo.Models;
 using APICatalogo.Repositories;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 
 namespace APICatalogo.Controllers;
 [Route("[controller]")]
