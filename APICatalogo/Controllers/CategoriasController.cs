@@ -1,4 +1,5 @@
 ﻿using APICatalogo.Models;
+using APICatalogo.Repositories.interfaces.GenericInterface;
 using APICatalogo.Repositories.interfaces.SpecificInterface;
 using Microsoft.AspNetCore.Mvc;
 
@@ -13,17 +14,17 @@ public class CategoriasController : ControllerBase
         _repository = repository;
     }
 
-    [HttpGet("produtos")]
-    public ActionResult<IEnumerable<Categoria>> GetCategoriasProdutos()
+    [HttpGet()]
+    public ActionResult<IEnumerable<Categoria>> GetAll()
     {
-        var categorias = _repository.GetCategorias();
+        var categorias = _repository.GetAll();
         return Ok(categorias);
     }
 
     [HttpGet("{id:int}", Name = "ObterCategoria")]
     public ActionResult<Categoria> GetById(int id)
     {
-        var categoriaById = _repository.GetCategoria(id);
+        var categoriaById = _repository.Get( c=> c.CategoriaId == id);
         if (categoriaById is null)
             return NotFound("Categoria não encontrado");
 
@@ -53,11 +54,11 @@ public class CategoriasController : ControllerBase
     [HttpDelete("{id:int}")]
     public ActionResult DeleteCategoria(int id)
     {
-        var categoria = _repository.GetCategoria(id);
+        var categoria = _repository.Get(c => c.CategoriaId == id);
         if (categoria is null)
             return NotFound("Categoria não encontrado");
 
-        var categoriaExcluida = _repository.Delete(id);
+        var categoriaExcluida = _repository.Delete(categoria);
         return Ok(categoriaExcluida);
     }
 }
