@@ -3,6 +3,9 @@ using APICatalogo.Extensions;
 using APICatalogo.Filters;
 using APICatalogo.Logging;
 using APICatalogo.Repositories;
+using APICatalogo.Repositories.interfaces.GenericInterface;
+using APICatalogo.Repositories.interfaces.SpecificInterface;
+using APICatalogo.Repositories.methods;
 using Microsoft.EntityFrameworkCore;
 using System.Text.Json.Serialization;
 
@@ -11,6 +14,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddScoped<ApiLoggingFilter>();
 builder.Services.AddScoped<ICategoriaRepository,CategoriaRepository>();
 builder.Services.AddScoped<IProdutoRepository,ProdutoRepository>();
+builder.Services.AddScoped(typeof(IRepository<>),typeof(Repository<>));
 builder.Services.AddControllers(options =>
 {
     options.Filters.Add(typeof(ApiExceptionFilter));  
