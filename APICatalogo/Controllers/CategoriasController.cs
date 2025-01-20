@@ -1,6 +1,5 @@
 ﻿using APICatalogo.Models;
-using APICatalogo.Repositories.interfaces.GenericInterface;
-using APICatalogo.Repositories.interfaces.SpecificInterface;
+using APICatalogo.Repositories;
 using Microsoft.AspNetCore.Mvc;
 
 namespace APICatalogo.Controllers;
@@ -8,23 +7,23 @@ namespace APICatalogo.Controllers;
 [ApiController]
 public class CategoriasController : ControllerBase
 {
-    private readonly ICategoriaRepository _repository;
-    public CategoriasController(ICategoriaRepository repository)
+    private readonly IUnitOfWork _unitOfWork;
+    public CategoriasController(IUnitOfWork unitOfWork)
     {
-        _repository = repository;
+        _unitOfWork = unitOfWork;
     }
 
     [HttpGet()]
     public ActionResult<IEnumerable<Categoria>> GetAll()
     {
-        var categorias = _repository.GetAll();
+        var categorias = _unitOfWork.CategoriaRepository.GetAll();
         return Ok(categorias);
     }
 
     [HttpGet("{id:int}", Name = "ObterCategoria")]
     public ActionResult<Categoria> GetById(int id)
     {
-        var categoriaById = _repository.Get( c=> c.CategoriaId == id);
+        var categoriaById = _unitOfWork.CategoriaRepository.Get( c=> c.CategoriaId == id);
         if (categoriaById is null)
             return NotFound("Categoria não encontrado");
 
@@ -35,8 +34,8 @@ public class CategoriasController : ControllerBase
     {
         if (categoria is null)
             return BadRequest();
-        var categoriaCriada = _repository.Create(categoria);
-
+        var categoriaCriada = _unitOfWork.CategoriaRepository.Create(categoria);
+        _unitOfWork.Commit();
 
         return new CreatedAtRouteResult("ObterCategoria", new { id = categoriaCriada.CategoriaId }, categoriaCriada);
     }
@@ -46,7 +45,8 @@ public class CategoriasController : ControllerBase
     {
         if (id != categoria.CategoriaId)
             return BadRequest();
-        _repository.Update(categoria);
+        _unitOfWork.CategoriaRepository.Update(categoria);
+        _unitOfWork.Commit();
 
         return Ok(categoria);
     }
@@ -54,11 +54,12 @@ public class CategoriasController : ControllerBase
     [HttpDelete("{id:int}")]
     public ActionResult DeleteCategoria(int id)
     {
-        var categoria = _repository.Get(c => c.CategoriaId == id);
+        var categoria = _unitOfWork.CategoriaRepository.Get(c => c.CategoriaId == id);
         if (categoria is null)
             return NotFound("Categoria não encontrado");
 
-        var categoriaExcluida = _repository.Delete(categoria);
+        var categoriaExcluida = _unitOfWork.CategoriaRepository.Delete(categoria);
+        _unitOfWork.Commit();
         return Ok(categoriaExcluida);
     }
 }
