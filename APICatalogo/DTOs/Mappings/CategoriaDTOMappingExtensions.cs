@@ -4,7 +4,7 @@ namespace APICatalogo.DTOs.Mappings;
 
 public static class CategoriaDTOMappingExtensions
 {
-    public static CategoriaDTO? ToCategoriaDTO(Categoria categoria)
+    public static CategoriaDTO? ToCategoriaDTO(this Categoria categoria)
     {
         if (categoria == null)
             return null;
@@ -16,7 +16,7 @@ public static class CategoriaDTOMappingExtensions
             Nome = categoria.Nome,
         };
     }
-    public static IEnumerable<CategoriaDTO> ToCategoriaDTOList(IEnumerable<Categoria> categorias)
+    public static IEnumerable<CategoriaDTO> ToCategoriaDTOList(this IEnumerable<Categoria> categorias)
     {
         if (categorias == null || !categorias.Any())
             return new List<CategoriaDTO>();

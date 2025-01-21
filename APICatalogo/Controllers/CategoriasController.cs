@@ -1,5 +1,5 @@
 ﻿using APICatalogo.DTOs;
-using APICatalogo.Models;
+using APICatalogo.DTOs.Mappings;
 using APICatalogo.Repositories;
 using Microsoft.AspNetCore.Mvc;
 
@@ -18,22 +18,10 @@ public class CategoriasController : ControllerBase
     public ActionResult<IEnumerable<CategoriaDTO>> GetAll()
     {
         var categorias = _unitOfWork.CategoriaRepository.GetAll();
-       
-        var listaCategoriasDto = new List<CategoriaDTO>();
 
-        foreach(var categoria in categorias)
-        {
-            var categoriaDto = new CategoriaDTO()
-            {
-                CategoriaId = categoria.CategoriaId,
-                ImageUrl = categoria.ImageUrl,
-                Nome = categoria.Nome,
-            };
-            listaCategoriasDto.Add(categoriaDto);
-        }
-        
-        
-        return Ok(listaCategoriasDto);
+        var categoriasDto = categorias.ToCategoriaDTOList();
+
+        return Ok(categoriasDto);
     }
 
     [HttpGet("{id:int}", Name = "ObterCategoria")]
@@ -42,13 +30,10 @@ public class CategoriasController : ControllerBase
         var categoriaById = _unitOfWork.CategoriaRepository.Get( c=> c.CategoriaId == id);
         if (categoriaById is null)
             return NotFound("Categoria não encontrado");
-        var categoriaDto = new CategoriaDTO()
-        {
-            CategoriaId = categoriaById.CategoriaId,
-            ImageUrl = categoriaById.ImageUrl,
-            Nome = categoriaById.Nome,
-        };
-        return Ok(categoriaById);
+
+         var categoriaDto = categoriaById.ToCategoriaDTO();
+
+        return Ok(categoriaDto);
     }
     [HttpPost]
     public ActionResult<CategoriaDTO> CadastrarCategoria(CategoriaDTO categoriaDto)
@@ -56,23 +41,15 @@ public class CategoriasController : ControllerBase
         if (categoriaDto is null)
             return BadRequest();
 
-        var categoria = new Categoria()
-        {
-            CategoriaId = categoriaDto.CategoriaId,
-            ImageUrl= categoriaDto.ImageUrl,
-            Nome= categoriaDto.Nome,      
-        };
-        var novaCategoriaDto = new CategoriaDTO()
-        {
-            CategoriaId = categoria.CategoriaId,
-            ImageUrl = categoria.ImageUrl,
-            Nome = categoria.Nome,
-        };
+        var categoria = categoriaDto.ToCategoria();
 
         var categoriaCriada = _unitOfWork.CategoriaRepository.Create(categoria);
+
+        var novaCategoriaDto = categoriaCriada.ToCategoriaDTO();
+
         _unitOfWork.Commit();
 
-        return new CreatedAtRouteResult("ObterCategoria", new { id = novaCategoriaDto.CategoriaId }, novaCategoriaDto);
+        return new CreatedAtRouteResult("ObterCategoria", new { id = novaCategoriaDto!.CategoriaId }, novaCategoriaDto);
     }
 
     [HttpPut("{id:int}")]
@@ -81,22 +58,12 @@ public class CategoriasController : ControllerBase
         if (id != categoriaDto.CategoriaId)
             return BadRequest();
 
-        var categoria = new Categoria()
-        {
-            CategoriaId = categoriaDto.CategoriaId,
-            ImageUrl = categoriaDto.ImageUrl,
-            Nome = categoriaDto.Nome,
-        };
+        var categoria = categoriaDto.ToCategoria();
 
-        var categoriaAtualizada = _unitOfWork.CategoriaRepository.Update(categoria);
+        var categoriaAtualizada = _unitOfWork.CategoriaRepository.Update(categoria!);
         _unitOfWork.Commit();
 
-        var categoriaAtualizadaDto = new CategoriaDTO()
-        {
-            Nome = categoriaAtualizada.Nome,
-            ImageUrl= categoriaAtualizada.ImageUrl,
-            CategoriaId = categoriaAtualizada.CategoriaId 
-        };
+        var categoriaAtualizadaDto = categoriaAtualizada.ToCategoriaDTO();
 
         return Ok(categoriaAtualizadaDto);
     }
@@ -105,18 +72,14 @@ public class CategoriasController : ControllerBase
     public ActionResult<CategoriaDTO> DeleteCategoria(int id)
     {
         var categoria = _unitOfWork.CategoriaRepository.Get(c => c.CategoriaId == id);
+       
         if (categoria is null)
             return NotFound("Categoria não encontrado");
 
         var categoriaExcluida = _unitOfWork.CategoriaRepository.Delete(categoria);
         _unitOfWork.Commit();
 
-        var categoriaExcluidaDto = new CategoriaDTO()
-        {
-            Nome = categoriaExcluida.Nome,
-            ImageUrl = categoriaExcluida.ImageUrl,
-            CategoriaId = categoriaExcluida.CategoriaId
-        };
+        var categoriaExcluidaDto = categoriaExcluida.ToCategoriaDTO();
 
         return Ok(categoriaExcluidaDto);
     }
