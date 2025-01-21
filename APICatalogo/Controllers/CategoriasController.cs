@@ -43,7 +43,7 @@ public class CategoriasController : ControllerBase
 
         var categoria = categoriaDto.ToCategoria();
 
-        var categoriaCriada = _unitOfWork.CategoriaRepository.Create(categoria);
+        var categoriaCriada = _unitOfWork.CategoriaRepository.Create(categoria!);
 
         var novaCategoriaDto = categoriaCriada.ToCategoriaDTO();
 
