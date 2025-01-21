@@ -33,7 +33,7 @@ public class CategoriasController : ControllerBase
         }
         
         
-        return Ok(categorias);
+        return Ok(listaCategoriasDto);
     }
 
     [HttpGet("{id:int}", Name = "ObterCategoria")]
