@@ -23,3 +23,109 @@ Information:Microsoft.EntityFrameworkCore.Database.Command.CommandExecuted -Exec
 SELECT `p`.`ProdutoId`, `p`.`CategoriaId`, `p`.`DataCadastro`, `p`.`Descricao`, `p`.`Estoque`, `p`.`ImageUrl`, `p`.`Nome`, `p`.`Preco`
 FROM `Produto` AS `p`
 LIMIT @__p_0
+Information:ListeningOnAddress -Now listening on: https://localhost:7283
+Information:ListeningOnAddress -Now listening on: http://localhost:5119
+Information:0 -Application started. Press Ctrl+C to shut down.
+Information:0 -Hosting environment: Development
+Information:0 -Content root path: D:\DEV\VISUAL STUDIO C\trabalhos\APICatalogo\APICatalogo
+Information:ListeningOnAddress -Now listening on: https://localhost:7283
+Information:ListeningOnAddress -Now listening on: http://localhost:5119
+Information:0 -Application started. Press Ctrl+C to shut down.
+Information:0 -Hosting environment: Development
+Information:0 -Content root path: D:\DEV\VISUAL STUDIO C\trabalhos\APICatalogo\APICatalogo
+Information:Microsoft.EntityFrameworkCore.Database.Command.CommandExecuted -Executed DbCommand (46ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT `c`.`CategoriaId`, `c`.`ImageUrl`, `c`.`Nome`
+FROM `Categorias` AS `c`
+Information:Microsoft.EntityFrameworkCore.Database.Command.CommandExecuted -Executed DbCommand (30ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT `c`.`CategoriaId`, `c`.`ImageUrl`, `c`.`Nome`
+FROM `Categorias` AS `c`
+WHERE `c`.`CategoriaId` = @__id_0
+LIMIT 1
+Information:Microsoft.EntityFrameworkCore.Database.Command.CommandExecuted -Executed DbCommand (8ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT `c`.`CategoriaId`, `c`.`ImageUrl`, `c`.`Nome`
+FROM `Categorias` AS `c`
+WHERE `c`.`CategoriaId` = @__id_0
+LIMIT 1
+Information:Microsoft.EntityFrameworkCore.Database.Command.CommandExecuted -Executed DbCommand (22ms) [Parameters=[@p2='?' (DbType = Int32), @p0='?' (Size = 80), @p1='?' (Size = 80)], CommandType='Text', CommandTimeout='30']
+SET AUTOCOMMIT = 1;
+UPDATE `Categorias` SET `ImageUrl` = @p0, `Nome` = @p1
+WHERE `CategoriaId` = @p2;
+SELECT ROW_COUNT();
+Information:Microsoft.EntityFrameworkCore.Database.Command.CommandExecuted -Executed DbCommand (0ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT `c`.`CategoriaId`, `c`.`ImageUrl`, `c`.`Nome`
+FROM `Categorias` AS `c`
+WHERE `c`.`CategoriaId` = @__id_0
+LIMIT 1
+Information:Microsoft.EntityFrameworkCore.Database.Command.CommandExecuted -Executed DbCommand (13ms) [Parameters=[@p0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SET AUTOCOMMIT = 1;
+DELETE FROM `Categorias`
+WHERE `CategoriaId` = @p0;
+SELECT ROW_COUNT();
+Information:Microsoft.EntityFrameworkCore.Database.Command.CommandExecuted -Executed DbCommand (1ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT `c`.`CategoriaId`, `c`.`ImageUrl`, `c`.`Nome`
+FROM `Categorias` AS `c`
+WHERE `c`.`CategoriaId` = @__id_0
+LIMIT 1
+Information:Microsoft.EntityFrameworkCore.Database.Command.CommandExecuted -Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT `p`.`ProdutoId`, `p`.`CategoriaId`, `p`.`DataCadastro`, `p`.`Descricao`, `p`.`Estoque`, `p`.`ImageUrl`, `p`.`Nome`, `p`.`Preco`
+FROM `Produto` AS `p`
+Information:Microsoft.EntityFrameworkCore.Database.Command.CommandExecuted -Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT `c`.`CategoriaId`, `c`.`ImageUrl`, `c`.`Nome`
+FROM `Categorias` AS `c`
+Error:0 -Ocorreu uma exception não tratada
+Information:Microsoft.EntityFrameworkCore.Database.Command.CommandExecuted -Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT `c`.`CategoriaId`, `c`.`ImageUrl`, `c`.`Nome`
+FROM `Categorias` AS `c`
+Error:0 -Ocorreu uma exception não tratada
+Information:Microsoft.EntityFrameworkCore.Database.Command.CommandExecuted -Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT `c`.`CategoriaId`, `c`.`ImageUrl`, `c`.`Nome`
+FROM `Categorias` AS `c`
+Error:0 -Ocorreu uma exception não tratada
+Information:ListeningOnAddress -Now listening on: https://localhost:7283
+Information:ListeningOnAddress -Now listening on: http://localhost:5119
+Information:0 -Application started. Press Ctrl+C to shut down.
+Information:0 -Hosting environment: Development
+Information:0 -Content root path: D:\DEV\VISUAL STUDIO C\trabalhos\APICatalogo\APICatalogo
+Information:Microsoft.EntityFrameworkCore.Database.Command.CommandExecuted -Executed DbCommand (14ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT `c`.`CategoriaId`, `c`.`ImageUrl`, `c`.`Nome`
+FROM `Categorias` AS `c`
+Information:ListeningOnAddress -Now listening on: https://localhost:7283
+Information:ListeningOnAddress -Now listening on: http://localhost:5119
+Information:0 -Application started. Press Ctrl+C to shut down.
+Information:0 -Hosting environment: Development
+Information:0 -Content root path: D:\DEV\VISUAL STUDIO C\trabalhos\APICatalogo\APICatalogo
+Information:Microsoft.EntityFrameworkCore.Database.Command.CommandExecuted -Executed DbCommand (28ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT `p`.`ProdutoId`, `p`.`CategoriaId`, `p`.`DataCadastro`, `p`.`Descricao`, `p`.`Estoque`, `p`.`ImageUrl`, `p`.`Nome`, `p`.`Preco`
+FROM `Produto` AS `p`
+Information:Microsoft.EntityFrameworkCore.Database.Command.CommandExecuted -Executed DbCommand (32ms) [Parameters=[@p0='?' (DbType = Int32), @p1='?' (DbType = Int32), @p2='?' (DbType = DateTime), @p3='?' (Size = 300), @p4='?' (DbType = Single), @p5='?' (Size = 300), @p6='?' (Size = 80), @p7='?' (DbType = Decimal)], CommandType='Text', CommandTimeout='30']
+SET AUTOCOMMIT = 1;
+INSERT INTO `Produto` (`ProdutoId`, `CategoriaId`, `DataCadastro`, `Descricao`, `Estoque`, `ImageUrl`, `Nome`, `Preco`)
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7);
+Information:Microsoft.EntityFrameworkCore.Database.Command.CommandExecuted -Executed DbCommand (0ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT `p`.`ProdutoId`, `p`.`CategoriaId`, `p`.`DataCadastro`, `p`.`Descricao`, `p`.`Estoque`, `p`.`ImageUrl`, `p`.`Nome`, `p`.`Preco`
+FROM `Produto` AS `p`
+WHERE `p`.`ProdutoId` = @__id_0
+LIMIT 1
+Information:Microsoft.EntityFrameworkCore.Database.Command.CommandExecuted -Executed DbCommand (6ms) [Parameters=[@p7='?' (DbType = Int32), @p0='?' (DbType = Int32), @p1='?' (DbType = DateTime), @p2='?' (Size = 300), @p3='?' (DbType = Single), @p4='?' (Size = 300), @p5='?' (Size = 80), @p6='?' (DbType = Decimal)], CommandType='Text', CommandTimeout='30']
+SET AUTOCOMMIT = 1;
+UPDATE `Produto` SET `CategoriaId` = @p0, `DataCadastro` = @p1, `Descricao` = @p2, `Estoque` = @p3, `ImageUrl` = @p4, `Nome` = @p5, `Preco` = @p6
+WHERE `ProdutoId` = @p7;
+SELECT ROW_COUNT();
+Information:Microsoft.EntityFrameworkCore.Database.Command.CommandExecuted -Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT `p`.`ProdutoId`, `p`.`CategoriaId`, `p`.`DataCadastro`, `p`.`Descricao`, `p`.`Estoque`, `p`.`ImageUrl`, `p`.`Nome`, `p`.`Preco`
+FROM `Produto` AS `p`
+Information:Microsoft.EntityFrameworkCore.Database.Command.CommandExecuted -Executed DbCommand (0ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT `p`.`ProdutoId`, `p`.`CategoriaId`, `p`.`DataCadastro`, `p`.`Descricao`, `p`.`Estoque`, `p`.`ImageUrl`, `p`.`Nome`, `p`.`Preco`
+FROM `Produto` AS `p`
+WHERE `p`.`ProdutoId` = @__id_0
+LIMIT 1
+Information:Microsoft.EntityFrameworkCore.Database.Command.CommandExecuted -Executed DbCommand (7ms) [Parameters=[@p0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SET AUTOCOMMIT = 1;
+DELETE FROM `Produto`
+WHERE `ProdutoId` = @p0;
+SELECT ROW_COUNT();
+Information:Microsoft.EntityFrameworkCore.Database.Command.CommandExecuted -Executed DbCommand (0ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT `p`.`ProdutoId`, `p`.`CategoriaId`, `p`.`DataCadastro`, `p`.`Descricao`, `p`.`Estoque`, `p`.`ImageUrl`, `p`.`Nome`, `p`.`Preco`
+FROM `Produto` AS `p`
+WHERE `p`.`ProdutoId` = @__id_0
+LIMIT 1

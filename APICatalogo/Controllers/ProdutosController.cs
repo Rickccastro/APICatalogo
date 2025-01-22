@@ -3,7 +3,6 @@ using APICatalogo.Models;
 using APICatalogo.Repositories;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
-using System.Collections.Generic;
 
 namespace APICatalogo.Controllers;
 [Route("[controller]")]
@@ -32,7 +31,7 @@ public class ProdutosController : ControllerBase
     [HttpGet]
     public ActionResult<IEnumerable<ProdutoDTO>> GetAsync()
     {
-        var listaProdutos = _unitOfWork.CategoriaRepository.GetAll().ToList();
+        var listaProdutos = _unitOfWork.ProdutoRepository.GetAll();
         if (listaProdutos is null)
             return NotFound();
         var listaProdutosDTO = _mapper.Map<IEnumerable<ProdutoDTO>>(listaProdutos);

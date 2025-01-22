@@ -1,5 +1,6 @@
 ﻿using APICatalogo.Models;
 using AutoMapper;
+using System.Collections.Generic;
 
 namespace APICatalogo.DTOs.Mappings;
 
