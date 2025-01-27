@@ -129,3 +129,22 @@ SELECT `p`.`ProdutoId`, `p`.`CategoriaId`, `p`.`DataCadastro`, `p`.`Descricao`, 
 FROM `Produto` AS `p`
 WHERE `p`.`ProdutoId` = @__id_0
 LIMIT 1
+Information:ListeningOnAddress -Now listening on: https://localhost:7283
+Information:ListeningOnAddress -Now listening on: http://localhost:5119
+Information:0 -Application started. Press Ctrl+C to shut down.
+Information:0 -Hosting environment: Development
+Information:0 -Content root path: D:\DEV\VISUAL STUDIO C\trabalhos\APICatalogo\APICatalogo
+Error:0 -Ocorreu uma exception não tratada
+Information:Microsoft.EntityFrameworkCore.Database.Command.CommandExecuted -Executed DbCommand (26ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT `p`.`ProdutoId`, `p`.`CategoriaId`, `p`.`DataCadastro`, `p`.`Descricao`, `p`.`Estoque`, `p`.`ImageUrl`, `p`.`Nome`, `p`.`Preco`
+FROM `Produto` AS `p`
+Information:Microsoft.EntityFrameworkCore.Database.Command.CommandExecuted -Executed DbCommand (27ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT `p`.`ProdutoId`, `p`.`CategoriaId`, `p`.`DataCadastro`, `p`.`Descricao`, `p`.`Estoque`, `p`.`ImageUrl`, `p`.`Nome`, `p`.`Preco`
+FROM `Produto` AS `p`
+WHERE `p`.`ProdutoId` = @__id_0
+LIMIT 1
+Information:Microsoft.EntityFrameworkCore.Database.Command.CommandExecuted -Executed DbCommand (16ms) [Parameters=[@p7='?' (DbType = Int32), @p0='?' (DbType = Int32), @p1='?' (DbType = DateTime), @p2='?' (Size = 300), @p3='?' (DbType = Single), @p4='?' (Size = 300), @p5='?' (Size = 80), @p6='?' (DbType = Decimal)], CommandType='Text', CommandTimeout='30']
+SET AUTOCOMMIT = 1;
+UPDATE `Produto` SET `CategoriaId` = @p0, `DataCadastro` = @p1, `Descricao` = @p2, `Estoque` = @p3, `ImageUrl` = @p4, `Nome` = @p5, `Preco` = @p6
+WHERE `ProdutoId` = @p7;
+SELECT ROW_COUNT();
