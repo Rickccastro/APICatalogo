@@ -1,5 +1,6 @@
 ﻿using APICatalogo.Context;
 using APICatalogo.Models;
+using APICatalogo.Pagination;
 using APICatalogo.Repositories.interfaces.SpecificInterface;
 using APICatalogo.Repositories.methods;
 
@@ -15,5 +16,11 @@ public class ProdutoRepository : Repository<Produto>,IProdutoRepository
     public IEnumerable<Produto> GetProdutoByCategoria(int id)
     {
       return GetAll().Where(c => c.CategoriaId == id);
+    }
+
+    public IEnumerable<Produto> GetProdutos(ProdutosParameters produtosParams)
+    {
+        return GetAll().OrderBy(p=> p.Nome).Skip((produtosParams.PageNumber - 1) * produtosParams.PageSize)
+            .Take(produtosParams.PageSize).ToList();
     }
 }
