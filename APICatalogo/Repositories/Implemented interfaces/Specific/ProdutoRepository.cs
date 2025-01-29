@@ -14,22 +14,26 @@ public class ProdutoRepository : Repository<Produto>,IProdutoRepository
         
     }
 
-    public IEnumerable<Produto> GetProdutoByCategoria(int id)
+    public async Task<IEnumerable<Produto>> GetProdutoByCategoriaAsync(int id)
     {
-      return GetAll().Where(c => c.CategoriaId == id);
+        var produtos = await GetAllAsync();
+
+        return produtos.Where(c => c.CategoriaId == id);
     }
 
-   
-    public PagedList<Produto> GetProdutos(ProdutosParameters produtosParams)
+
+    public async Task <PagedList<Produto>> GetProdutosAsync(ProdutosParameters produtosParams)
     {
-        var produtos = GetAll().OrderBy(p => p.ProdutoId).AsQueryable();
-        var produtosOrdenados = PagedList<Produto>.ToPagedList(produtos, produtosParams.PageNumber, produtosParams.PageSize);      
-        return produtosOrdenados;
+        var produtos = await GetAllAsync();
+        var produtosOrdenados = produtos.OrderBy(p => p.ProdutoId).AsQueryable();
+        var resultado = PagedList<Produto>.ToPagedList(produtosOrdenados, produtosParams.PageNumber, produtosParams.PageSize);      
+        return resultado;
     }
 
-    public PagedList<Produto> GetProdutosFiltroPreco(ProdutosFiltroPreco produtosFltroParams)
+    public async Task <PagedList<Produto>> GetProdutosFiltroPrecoAsync(ProdutosFiltroPreco produtosFltroParams)
     {
-        var produtos = GetAll().AsQueryable();
+        var produtos = await GetAllAsync();
+
         if (produtosFltroParams.Preco.HasValue && !string.IsNullOrEmpty(produtosFltroParams.PrecoCriterio))
         {
             if (produtosFltroParams.PrecoCriterio.Equals("maior", StringComparison.OrdinalIgnoreCase))
@@ -46,7 +50,7 @@ public class ProdutoRepository : Repository<Produto>,IProdutoRepository
             }
         }
 
-        var produtosFiltrados = PagedList<Produto>.ToPagedList(produtos, produtosFltroParams.PageNumber, produtosFltroParams.PageSize);
+        var produtosFiltrados = PagedList<Produto>.ToPagedList(produtos.AsQueryable(), produtosFltroParams.PageNumber, produtosFltroParams.PageSize);
         return produtosFiltrados;
     }
 }
