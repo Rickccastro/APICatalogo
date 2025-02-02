@@ -7,6 +7,7 @@ using APICatalogo.Repositories;
 using APICatalogo.Repositories.interfaces.GenericInterface;
 using APICatalogo.Repositories.interfaces.SpecificInterface;
 using APICatalogo.Repositories.methods;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using System.Text.Json.Serialization;
 
@@ -26,10 +27,15 @@ builder.Services.AddControllers(options =>
         options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles;
     }).AddNewtonsoftJson();
 
+builder.Services.AddAuthentication("Bearer").AddJwtBearer();
 builder.Services.AddEndpointsApiExplorer();
+
+builder.Services.AddIdentity<IdentityUser,IdentityRole>()
+    .AddEntityFrameworkStores<AppDbContext>().AddDefaultTokenProviders();
 
 builder.Services.AddSwaggerGen();
 
+builder.Services.AddAuthorization();
 builder.Services.AddAutoMapper(typeof(ProdutoDTOMappingProfile));
 
 var mySqlConnection = builder.Configuration.GetConnectionString("DefaultConnection");
@@ -51,8 +57,6 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-
-app.UseAuthorization();
 
 app.MapControllers();
 

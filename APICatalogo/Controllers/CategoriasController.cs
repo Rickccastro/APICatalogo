@@ -4,6 +4,7 @@ using APICatalogo.Models;
 using APICatalogo.Pagination;
 using APICatalogo.Pagination.Filters;
 using APICatalogo.Repositories;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using X.PagedList;
@@ -20,6 +21,7 @@ public class CategoriasController : ControllerBase
     }
 
     [HttpGet]
+    [Authorize]
     public async Task<ActionResult<IEnumerable<CategoriaDTO>>> GetAll()
     {
         var categorias = await _unitOfWork.CategoriaRepository.GetAllAsync();
