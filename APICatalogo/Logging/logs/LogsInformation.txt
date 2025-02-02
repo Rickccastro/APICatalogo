@@ -303,3 +303,19 @@ CREATE UNIQUE INDEX `UserNameIndex` ON `AspNetUsers` (`NormalizedUserName`);
 Information:Microsoft.EntityFrameworkCore.Database.Command.CommandExecuted -Executed DbCommand (13ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
 INSERT INTO `__EFMigrationsHistory` (`MigrationId`, `ProductVersion`)
 VALUES ('20250202003114_CriaTabelasIdentity', '8.0.12');
+Information:Microsoft.EntityFrameworkCore.Database.Command.CommandExecuted -Executed DbCommand (6ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT 1 FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA='CatalogoDB' AND TABLE_NAME='__EFMigrationsHistory';
+Information:Microsoft.EntityFrameworkCore.Database.Command.CommandExecuted -Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT 1 FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA='CatalogoDB' AND TABLE_NAME='__EFMigrationsHistory';
+Information:Microsoft.EntityFrameworkCore.Database.Command.CommandExecuted -Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT `MigrationId`, `ProductVersion`
+FROM `__EFMigrationsHistory`
+ORDER BY `MigrationId`;
+Information:Microsoft.EntityFrameworkCore.Migrations.MigrationApplying -Applying migration '20250202013204_AjusteApplicationUser'.
+Information:Microsoft.EntityFrameworkCore.Database.Command.CommandExecuted -Executed DbCommand (23ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+ALTER TABLE `AspNetUsers` ADD `RefreshToken` longtext CHARACTER SET utf8mb4 NULL;
+Information:Microsoft.EntityFrameworkCore.Database.Command.CommandExecuted -Executed DbCommand (20ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+ALTER TABLE `AspNetUsers` ADD `RefreshTokenExpiryTime` datetime(6) NOT NULL DEFAULT '0001-01-01 00:00:00';
+Information:Microsoft.EntityFrameworkCore.Database.Command.CommandExecuted -Executed DbCommand (14ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+INSERT INTO `__EFMigrationsHistory` (`MigrationId`, `ProductVersion`)
+VALUES ('20250202013204_AjusteApplicationUser', '8.0.12');
