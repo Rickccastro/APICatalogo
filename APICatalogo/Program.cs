@@ -8,6 +8,7 @@ using APICatalogo.Repositories;
 using APICatalogo.Repositories.interfaces.GenericInterface;
 using APICatalogo.Repositories.interfaces.SpecificInterface;
 using APICatalogo.Repositories.methods;
+using APICatalogo.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -21,7 +22,10 @@ builder.Services.AddScoped<ApiLoggingFilter>();
 builder.Services.AddScoped<ICategoriaRepository,CategoriaRepository>();
 builder.Services.AddScoped<IProdutoRepository,ProdutoRepository>();
 builder.Services.AddScoped<IUnitOfWork,UnitOfWork>();
+builder.Services.AddScoped<ITokenService,TokenService>();
 builder.Services.AddScoped(typeof(IRepository<>),typeof(Repository<>));
+
+
 builder.Services.AddControllers(options =>
 {
     options.Filters.Add(typeof(ApiExceptionFilter));  
