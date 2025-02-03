@@ -5,6 +5,7 @@ using APICatalogo.Pagination;
 using APICatalogo.Pagination.Filters;
 using APICatalogo.Repositories;
 using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
@@ -71,6 +72,7 @@ public class ProdutosController : ControllerBase
         Response.Headers.Append("X-Pagination", JsonConvert.SerializeObject(metaData));
     }
 
+    [Authorize]
     [HttpGet]
     public ActionResult<IEnumerable<ProdutoDTO>> GetAsync()
     {
