@@ -28,7 +28,9 @@ public class TokenService : ITokenService
         };
 
         var tokenHandler = new JwtSecurityTokenHandler();
-        var token= tokenHandler.CreateJwtSecurityToken(tokenDescriptor);
+
+        var token = tokenHandler.CreateJwtSecurityToken(tokenDescriptor);
+
 
         return token;
     }
@@ -38,7 +40,7 @@ public class TokenService : ITokenService
         var secureRandomBytes = new byte[128];
         using var randomNumberGenerator = RandomNumberGenerator.Create();
         randomNumberGenerator.GetBytes(secureRandomBytes);
-        var refreshToken = Convert.ToBase64String(secureRandomBytes);   
+        var refreshToken = Convert.ToBase64String(secureRandomBytes);
 
         return refreshToken;
     }
@@ -53,15 +55,15 @@ public class TokenService : ITokenService
             ValidateIssuer = false,
             ValidateIssuerSigningKey = false,
             IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(secretKey)),
-            ValidateLifetime = false,   
-           
+            ValidateLifetime = false,
+
         };
 
         var tokenHandler = new JwtSecurityTokenHandler();
 
         var principal = tokenHandler.ValidateToken(token, tokenValidationParameters, out SecurityToken securityToken);
 
-        if(securityToken is not JwtSecurityToken jwtSecurityToken ||
+        if (securityToken is not JwtSecurityToken jwtSecurityToken ||
             !jwtSecurityToken.Header.Alg.Equals
             (SecurityAlgorithms.HmacSha256, StringComparison.InvariantCultureIgnoreCase))
 

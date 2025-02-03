@@ -20,8 +20,8 @@ public class CategoriasController : ControllerBase
         _unitOfWork = unitOfWork;
     }
 
-    [HttpGet]
     [Authorize]
+    [HttpGet("All")]
     public async Task<ActionResult<IEnumerable<CategoriaDTO>>> GetAll()
     {
         var categorias = await _unitOfWork.CategoriaRepository.GetAllAsync();
