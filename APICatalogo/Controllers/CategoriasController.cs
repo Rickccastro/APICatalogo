@@ -20,7 +20,7 @@ public class CategoriasController : ControllerBase
         _unitOfWork = unitOfWork;
     }
 
-    [Authorize]
+    [Authorize(AuthenticationSchemes = "Bearer")]
     [HttpGet("All")]
     public async Task<ActionResult<IEnumerable<CategoriaDTO>>> GetAll()
     {
