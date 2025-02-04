@@ -72,7 +72,8 @@ public class ProdutosController : ControllerBase
         Response.Headers.Append("X-Pagination", JsonConvert.SerializeObject(metaData));
     }
 
-    [Authorize]
+
+    [Authorize(AuthenticationSchemes = "Bearer")]
     [HttpGet]
     public ActionResult<IEnumerable<ProdutoDTO>> GetAsync()
     {
