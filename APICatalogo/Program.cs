@@ -55,7 +55,16 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJw
     };
 });
 
-builder.Services.AddAuthorization();
+builder.Services.AddAuthorization(options => 
+{
+    options.AddPolicy("Admin-Geral", policy => policy.RequireRole("Admin-Geral"));
+    options.AddPolicy("Admin", policy => policy.RequireRole("Admin"));
+    options.AddPolicy("User", policy => policy.RequireRole("User"));
+
+    options.AddPolicy("Exclusive", policy => policy.RequireAssertion
+    (context => context.User.HasClaim(claim => claim.Type == "id" && claim.Value == "ricardoAdmin")
+    || context.User.IsInRole("Admin-Geral")));
+});
 
 
 builder.Services.AddEndpointsApiExplorer();
@@ -102,6 +111,21 @@ builder.Logging.AddProvider(new CustomLoggerProvider(new CustomLoggerProviderCon
 {
     LogLevel = LogLevel.Information,
 }));
+
+builder.Services.AddCors(options => 
+{
+    options.AddPolicy("MyPolicy", policy =>
+    {
+        policy
+        .WithOrigins("https://localhost:7022/TestaCors.html")
+        .WithMethods("GET", "POST")
+        .AllowAnyHeader();    
+    });
+});
+
+
+
+
 var app = builder.Build();
 
 app.UseAuthentication(); 
@@ -116,6 +140,11 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+app.UseStaticFiles();
+app.UseRouting();
+
+app.UseCors("MyPolicy");  
+
 
 app.MapControllers();
 
