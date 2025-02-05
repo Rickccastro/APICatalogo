@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.9.34728.123
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "APICatalogo", "APICatalogo\APICatalogo.csproj", "{CE791C36-1017-49C6-868F-AE71B96E724E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "APICatalogo", "APICatalogo\APICatalogo.csproj", "{CE791C36-1017-49C6-868F-AE71B96E724E}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestaCORSMvc", "..\TestaCORSMvc\TestaCORSMvc\TestaCORSMvc.csproj", "{3335EE79-5E63-408D-B511-13FF53CDFD32}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{CE791C36-1017-49C6-868F-AE71B96E724E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CE791C36-1017-49C6-868F-AE71B96E724E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CE791C36-1017-49C6-868F-AE71B96E724E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3335EE79-5E63-408D-B511-13FF53CDFD32}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3335EE79-5E63-408D-B511-13FF53CDFD32}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3335EE79-5E63-408D-B511-13FF53CDFD32}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3335EE79-5E63-408D-B511-13FF53CDFD32}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
