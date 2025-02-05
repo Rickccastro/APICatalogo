@@ -152,6 +152,7 @@ public class ProdutosController : ControllerBase
         return Ok(produtoAtualizadoDTO);
     }
 
+    [Authorize(AuthenticationSchemes = "Bearer", Policy = "Admin-Geral")]
     [HttpDelete("{id:int}")]
     public async Task <ActionResult<ProdutoDTO>> DeleteProduto(int id)
     {

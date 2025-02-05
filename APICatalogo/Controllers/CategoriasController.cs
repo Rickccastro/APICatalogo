@@ -5,11 +5,14 @@ using APICatalogo.Pagination;
 using APICatalogo.Pagination.Filters;
 using APICatalogo.Repositories;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using X.PagedList;
 
 namespace APICatalogo.Controllers;
+
+[EnableCors("MyPolicy")]
 [Route("[controller]")]
 [ApiController]
 public class CategoriasController : ControllerBase
@@ -20,7 +23,6 @@ public class CategoriasController : ControllerBase
         _unitOfWork = unitOfWork;
     }
 
-    [Authorize(AuthenticationSchemes = "Bearer")]
     [HttpGet("All")]
     public async Task<ActionResult<IEnumerable<CategoriaDTO>>> GetAll()
     {
@@ -67,7 +69,7 @@ public class CategoriasController : ControllerBase
 
 
 
-
+    [DisableCors]
     [HttpGet("{id:int}", Name = "ObterCategoria")]
     public async Task<ActionResult<CategoriaDTO>> GetById(int id)
     {
@@ -79,6 +81,8 @@ public class CategoriasController : ControllerBase
 
         return Ok(categoriaDto);
     }
+
+
     [HttpPost]
     public ActionResult<CategoriaDTO> CadastrarCategoria(CategoriaDTO categoriaDto)
     {
@@ -96,6 +100,7 @@ public class CategoriasController : ControllerBase
         return new CreatedAtRouteResult("ObterCategoria", new { id = novaCategoriaDto!.CategoriaId }, novaCategoriaDto);
     }
 
+    [Authorize(AuthenticationSchemes = "Bearer")]
     [HttpPut("{id:int}")]
     public ActionResult<CategoriaDTO> AtualizarPutCategoria(int id, CategoriaDTO categoriaDto)
     {
@@ -112,6 +117,7 @@ public class CategoriasController : ControllerBase
         return Ok(categoriaAtualizadaDto);
     }
 
+    [Authorize(AuthenticationSchemes = "Bearer",Policy ="Admin-Geral")]
     [HttpDelete("{id:int}")]
     public async Task<ActionResult<CategoriaDTO>> DeleteCategoria(int id)
     {
