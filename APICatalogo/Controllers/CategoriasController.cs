@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using X.PagedList;
+using Microsoft.AspNetCore.Http;
 
 namespace APICatalogo.Controllers;
 
@@ -85,6 +86,9 @@ public class CategoriasController : ControllerBase
 
 
     [HttpPost]
+    [ProducesResponseType(StatusCodes.Status201Created)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    [ProducesDefaultResponseType]
     public ActionResult<CategoriaDTO> CadastrarCategoria(CategoriaDTO categoriaDto)
     {
         if (categoriaDto is null)
@@ -103,6 +107,9 @@ public class CategoriasController : ControllerBase
 
     [Authorize(AuthenticationSchemes = "Bearer")]
     [HttpPut("{id:int}")]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    [ProducesDefaultResponseType]
     public ActionResult<CategoriaDTO> AtualizarPutCategoria(int id, CategoriaDTO categoriaDto)
     {
         if (id != categoriaDto.CategoriaId)
