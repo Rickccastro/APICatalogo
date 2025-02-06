@@ -1531,3 +1531,23 @@ FROM `Categorias` AS `c`
 Information:Microsoft.EntityFrameworkCore.Database.Command.CommandExecuted -Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
 SELECT `c`.`CategoriaId`, `c`.`ImageUrl`, `c`.`Nome`
 FROM `Categorias` AS `c`
+Warning:WebRootPathNotFound -The WebRootPath was not found: D:\DEV\VISUAL STUDIO C\trabalhos\APICatalogo\APICatalogo\wwwroot. Static files may be unavailable.
+Information:ListeningOnAddress -Now listening on: https://localhost:7283
+Information:ListeningOnAddress -Now listening on: http://localhost:5119
+Information:0 -Application started. Press Ctrl+C to shut down.
+Information:0 -Hosting environment: Development
+Information:0 -Content root path: D:\DEV\VISUAL STUDIO C\trabalhos\APICatalogo\APICatalogo
+Error:UnhandledException -An unhandled exception has occurred while executing the request.
+Error:UnhandledException -An unhandled exception has occurred while executing the request.
+Warning:WebRootPathNotFound -The WebRootPath was not found: D:\DEV\VISUAL STUDIO C\trabalhos\APICatalogo\APICatalogo\wwwroot. Static files may be unavailable.
+Information:ListeningOnAddress -Now listening on: https://localhost:7283
+Information:ListeningOnAddress -Now listening on: http://localhost:5119
+Information:0 -Application started. Press Ctrl+C to shut down.
+Information:0 -Hosting environment: Development
+Information:0 -Content root path: D:\DEV\VISUAL STUDIO C\trabalhos\APICatalogo\APICatalogo
+Warning:WebRootPathNotFound -The WebRootPath was not found: D:\DEV\VISUAL STUDIO C\trabalhos\APICatalogo\APICatalogo\wwwroot. Static files may be unavailable.
+Information:ListeningOnAddress -Now listening on: https://localhost:7283
+Information:ListeningOnAddress -Now listening on: http://localhost:5119
+Information:0 -Application started. Press Ctrl+C to shut down.
+Information:0 -Hosting environment: Development
+Information:0 -Content root path: D:\DEV\VISUAL STUDIO C\trabalhos\APICatalogo\APICatalogo

@@ -10,6 +10,7 @@ using System.Security.Claims;
 
 namespace APICatalogo.Controllers;
 [Route("[controller]")]
+[ApiConventionType(typeof(DefaultApiConventions))]
 [ApiController]
 public class AuthController : ControllerBase
 {
