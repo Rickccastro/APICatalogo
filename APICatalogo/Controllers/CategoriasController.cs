@@ -14,6 +14,7 @@ namespace APICatalogo.Controllers;
 
 [EnableCors("MyPolicy")]
 [Route("[controller]")]
+[ApiConventionType(typeof(DefaultApiConventions))]
 [ApiController]
 public class CategoriasController : ControllerBase
 {
