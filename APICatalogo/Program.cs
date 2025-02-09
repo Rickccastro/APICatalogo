@@ -13,6 +13,7 @@ using APICatalogo.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Caching.Memory;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using System.Text;
@@ -26,6 +27,7 @@ builder.Services.AddScoped<ICategoriaRepository,CategoriaRepository>();
 builder.Services.AddScoped<IProdutoRepository,ProdutoRepository>();
 builder.Services.AddScoped<IUnitOfWork,UnitOfWork>();
 builder.Services.AddScoped<ITokenService,TokenService>();
+builder.Services.AddSingleton<CacheService>();
 builder.Services.AddScoped(typeof(IRepository<>),typeof(Repository<>));
 
 
@@ -68,6 +70,8 @@ builder.Services.AddAuthorization(options =>
     || context.User.IsInRole("Admin-Geral")));
 });
 
+
+builder.Services.AddMemoryCache();
 
 builder.Services.AddEndpointsApiExplorer();
 
