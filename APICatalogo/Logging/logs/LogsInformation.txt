@@ -1557,3 +1557,118 @@ Information:ListeningOnAddress -Now listening on: http://localhost:5119
 Information:0 -Application started. Press Ctrl+C to shut down.
 Information:0 -Hosting environment: Development
 Information:0 -Content root path: D:\DEV\VISUAL STUDIO C\trabalhos\APICatalogo\APICatalogo
+Warning:WebRootPathNotFound -The WebRootPath was not found: D:\DEV\VISUAL STUDIO C\trabalhos\APICatalogo\APICatalogo\wwwroot. Static files may be unavailable.
+Information:ListeningOnAddress -Now listening on: https://localhost:7283
+Information:ListeningOnAddress -Now listening on: http://localhost:5119
+Information:0 -Application started. Press Ctrl+C to shut down.
+Information:0 -Hosting environment: Production
+Information:0 -Content root path: D:\DEV\VISUAL STUDIO C\trabalhos\APICatalogo\APICatalogo
+Error:0 -Ocorreu uma exception não tratada
+Warning:WebRootPathNotFound -The WebRootPath was not found: D:\DEV\VISUAL STUDIO C\trabalhos\APICatalogo\APICatalogo\wwwroot. Static files may be unavailable.
+Information:ListeningOnAddress -Now listening on: https://localhost:7283
+Information:ListeningOnAddress -Now listening on: http://localhost:5119
+Information:0 -Application started. Press Ctrl+C to shut down.
+Information:0 -Hosting environment: Production
+Information:0 -Content root path: D:\DEV\VISUAL STUDIO C\trabalhos\APICatalogo\APICatalogo
+Warning:WebRootPathNotFound -The WebRootPath was not found: D:\DEV\VISUAL STUDIO C\trabalhos\APICatalogo\APICatalogo\wwwroot. Static files may be unavailable.
+Information:ListeningOnAddress -Now listening on: https://localhost:7283
+Information:ListeningOnAddress -Now listening on: http://localhost:5119
+Information:0 -Application started. Press Ctrl+C to shut down.
+Information:0 -Hosting environment: Production
+Information:0 -Content root path: D:\DEV\VISUAL STUDIO C\trabalhos\APICatalogo\APICatalogo
+Warning:WebRootPathNotFound -The WebRootPath was not found: D:\DEV\VISUAL STUDIO C\trabalhos\APICatalogo\APICatalogo\wwwroot. Static files may be unavailable.
+Information:ListeningOnAddress -Now listening on: https://localhost:7283
+Information:ListeningOnAddress -Now listening on: http://localhost:5119
+Information:0 -Application started. Press Ctrl+C to shut down.
+Information:0 -Hosting environment: Production
+Information:0 -Content root path: D:\DEV\VISUAL STUDIO C\trabalhos\APICatalogo\APICatalogo
+Warning:WebRootPathNotFound -The WebRootPath was not found: D:\DEV\VISUAL STUDIO C\trabalhos\APICatalogo\APICatalogo\wwwroot. Static files may be unavailable.
+Information:ListeningOnAddress -Now listening on: https://localhost:7283
+Information:ListeningOnAddress -Now listening on: http://localhost:5119
+Information:0 -Application started. Press Ctrl+C to shut down.
+Information:0 -Hosting environment: Development
+Information:0 -Content root path: D:\DEV\VISUAL STUDIO C\trabalhos\APICatalogo\APICatalogo
+Information:Microsoft.EntityFrameworkCore.Database.Command.CommandExecuted -Executed DbCommand (51ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT `c`.`CategoriaId`, `c`.`ImageUrl`, `c`.`Nome`
+FROM `Categorias` AS `c`
+Warning:UsingInMemoryRepository -Using an in-memory repository. Keys will not be persisted to storage.
+Warning:UsingEphemeralKeyRepository -Neither user profile nor HKLM registry available. Using an ephemeral key repository. Protected data will be unavailable when application exits.
+Warning:NoXMLEncryptorConfiguredKeyMayBePersistedToStorageInUnencryptedForm -No XML encryptor configured. Key {94893046-c382-4a9d-b39f-7439900b9081} may be persisted to storage in unencrypted form.
+Warning:WebRootPathNotFound -The WebRootPath was not found: D:\DEV\VISUAL STUDIO C\Deploy\DeployApiCatalogo\wwwroot. Static files may be unavailable.
+Information:0 -Application started. Press Ctrl+C to shut down.
+Information:0 -Hosting environment: Production
+Information:0 -Content root path: D:\DEV\VISUAL STUDIO C\Deploy\DeployApiCatalogo
+Warning:FailedToDeterminePort -Failed to determine the https port for redirect.
+Information:0 -Application is shutting down...
+Warning:UsingInMemoryRepository -Using an in-memory repository. Keys will not be persisted to storage.
+Warning:UsingEphemeralKeyRepository -Neither user profile nor HKLM registry available. Using an ephemeral key repository. Protected data will be unavailable when application exits.
+Warning:NoXMLEncryptorConfiguredKeyMayBePersistedToStorageInUnencryptedForm -No XML encryptor configured. Key {8264ddba-d296-4232-855e-0b0800f55f3a} may be persisted to storage in unencrypted form.
+Warning:WebRootPathNotFound -The WebRootPath was not found: D:\DEV\VISUAL STUDIO C\Deploy\DeployApiCatalogo\wwwroot. Static files may be unavailable.
+Information:0 -Application started. Press Ctrl+C to shut down.
+Information:0 -Hosting environment: Production
+Information:0 -Content root path: D:\DEV\VISUAL STUDIO C\Deploy\DeployApiCatalogo
+Warning:FailedToDeterminePort -Failed to determine the https port for redirect.
+Information:0 -Application is shutting down...
+Warning:UsingInMemoryRepository -Using an in-memory repository. Keys will not be persisted to storage.
+Warning:UsingEphemeralKeyRepository -Neither user profile nor HKLM registry available. Using an ephemeral key repository. Protected data will be unavailable when application exits.
+Warning:NoXMLEncryptorConfiguredKeyMayBePersistedToStorageInUnencryptedForm -No XML encryptor configured. Key {e961d718-50dd-4aeb-8f92-71783cd18057} may be persisted to storage in unencrypted form.
+Warning:WebRootPathNotFound -The WebRootPath was not found: D:\DEV\VISUAL STUDIO C\Deploy\DeployApiCatalogo\wwwroot. Static files may be unavailable.
+Information:0 -Application started. Press Ctrl+C to shut down.
+Information:0 -Hosting environment: Production
+Information:0 -Content root path: D:\DEV\VISUAL STUDIO C\Deploy\DeployApiCatalogo
+Warning:FailedToDeterminePort -Failed to determine the https port for redirect.
+Information:0 -Application is shutting down...
+Warning:UsingInMemoryRepository -Using an in-memory repository. Keys will not be persisted to storage.
+Warning:UsingEphemeralKeyRepository -Neither user profile nor HKLM registry available. Using an ephemeral key repository. Protected data will be unavailable when application exits.
+Warning:NoXMLEncryptorConfiguredKeyMayBePersistedToStorageInUnencryptedForm -No XML encryptor configured. Key {8c70eddb-b356-4089-abc7-eb554eddbedc} may be persisted to storage in unencrypted form.
+Warning:WebRootPathNotFound -The WebRootPath was not found: D:\DEV\VISUAL STUDIO C\Deploy\DeployApiCatalogo\wwwroot. Static files may be unavailable.
+Information:0 -Application started. Press Ctrl+C to shut down.
+Information:0 -Hosting environment: Production
+Information:0 -Content root path: D:\DEV\VISUAL STUDIO C\Deploy\DeployApiCatalogo
+Warning:FailedToDeterminePort -Failed to determine the https port for redirect.
+Information:Microsoft.EntityFrameworkCore.Database.Command.CommandExecuted -Executed DbCommand (39ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT `c`.`CategoriaId`, `c`.`ImageUrl`, `c`.`Nome`
+FROM `Categorias` AS `c`
+WHERE `c`.`CategoriaId` = @__id_0
+LIMIT 1
+Information:Microsoft.EntityFrameworkCore.Database.Command.CommandExecuted -Executed DbCommand (0ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT `c`.`CategoriaId`, `c`.`ImageUrl`, `c`.`Nome`
+FROM `Categorias` AS `c`
+WHERE `c`.`CategoriaId` = @__id_0
+LIMIT 1
+Information:Microsoft.EntityFrameworkCore.Database.Command.CommandExecuted -Executed DbCommand (0ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT `c`.`CategoriaId`, `c`.`ImageUrl`, `c`.`Nome`
+FROM `Categorias` AS `c`
+WHERE `c`.`CategoriaId` = @__id_0
+LIMIT 1
+Information:0 -Application is shutting down...
+Warning:WebRootPathNotFound -The WebRootPath was not found: D:\DEV\VISUAL STUDIO C\trabalhos\APICatalogo\APICatalogo\wwwroot. Static files may be unavailable.
+Information:ListeningOnAddress -Now listening on: https://localhost:7283
+Information:ListeningOnAddress -Now listening on: http://localhost:5119
+Information:0 -Application started. Press Ctrl+C to shut down.
+Information:0 -Hosting environment: Development
+Information:0 -Content root path: D:\DEV\VISUAL STUDIO C\trabalhos\APICatalogo\APICatalogo
+Information:Microsoft.EntityFrameworkCore.Database.Command.CommandExecuted -Executed DbCommand (18ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT `c`.`CategoriaId`, `c`.`ImageUrl`, `c`.`Nome`
+FROM `Categorias` AS `c`
+Information:Microsoft.EntityFrameworkCore.Database.Command.CommandExecuted -Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT `c`.`CategoriaId`, `c`.`ImageUrl`, `c`.`Nome`
+FROM `Categorias` AS `c`
+Information:Microsoft.EntityFrameworkCore.Database.Command.CommandExecuted -Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT `c`.`CategoriaId`, `c`.`ImageUrl`, `c`.`Nome`
+FROM `Categorias` AS `c`
+Information:Microsoft.EntityFrameworkCore.Database.Command.CommandExecuted -Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT `c`.`CategoriaId`, `c`.`ImageUrl`, `c`.`Nome`
+FROM `Categorias` AS `c`
+Information:Microsoft.EntityFrameworkCore.Database.Command.CommandExecuted -Executed DbCommand (2ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT `c`.`CategoriaId`, `c`.`ImageUrl`, `c`.`Nome`
+FROM `Categorias` AS `c`
+Information:Microsoft.EntityFrameworkCore.Database.Command.CommandExecuted -Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT `c`.`CategoriaId`, `c`.`ImageUrl`, `c`.`Nome`
+FROM `Categorias` AS `c`
+Warning:WebRootPathNotFound -The WebRootPath was not found: D:\DEV\VISUAL STUDIO C\trabalhos\APICatalogo\APICatalogo\wwwroot. Static files may be unavailable.
+Information:ListeningOnAddress -Now listening on: https://localhost:7283
+Information:ListeningOnAddress -Now listening on: http://localhost:5119
+Information:0 -Application started. Press Ctrl+C to shut down.
+Information:0 -Hosting environment: Development
+Information:0 -Content root path: D:\DEV\VISUAL STUDIO C\trabalhos\APICatalogo\APICatalogo

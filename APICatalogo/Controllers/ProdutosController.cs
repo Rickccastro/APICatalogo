@@ -38,7 +38,7 @@ public class ProdutosController : ControllerBase
     [HttpGet("produtos/{id}")]
     public async Task<ActionResult<IEnumerable<ProdutoDTO>>> GetProdutoByCategoria(int id)
     {
-       
+
         var listaProdutosByCategoria = await _unitOfWork.ProdutoRepository.GetProdutoByCategoriaAsync(id);
         if (listaProdutosByCategoria is null)
             return NotFound();
@@ -48,18 +48,18 @@ public class ProdutosController : ControllerBase
     }
 
     [HttpGet("pagination")]
-    public async Task <ActionResult<IEnumerable<ProdutoDTO>>> GetProdutos([FromQuery] ProdutosParameters produtosParameters)
+    public async Task<ActionResult<IEnumerable<ProdutoDTO>>> GetProdutos([FromQuery] ProdutosParameters produtosParameters)
     {
         var listaProdutos = await _unitOfWork.ProdutoRepository.GetProdutosAsync(produtosParameters);
 
- 
+
         ObterProdutos(listaProdutos);
 
         var listaProdutosDTO = _mapper.Map<IEnumerable<ProdutoDTO>>(listaProdutos);
         return Ok(listaProdutosDTO);
-    }  
+    }
     [HttpGet("filter/preco/pagination")]
-    public async Task <ActionResult<IEnumerable<ProdutoDTO>>> GetProdutosFilterPreco([FromQuery] ProdutosFiltroPreco produtosFilterParams)
+    public async Task<ActionResult<IEnumerable<ProdutoDTO>>> GetProdutosFilterPreco([FromQuery] ProdutosFiltroPreco produtosFilterParams)
     {
         var listaProdutos = await _unitOfWork.ProdutoRepository.GetProdutosFiltroPrecoAsync(produtosFilterParams);
 
@@ -106,6 +106,7 @@ public class ProdutosController : ControllerBase
 
         return Ok(listaProdutosDTO);
     }
+
     [HttpGet("{id}", Name = "ObterProduto")]
     public ActionResult<ProdutoDTO> GetByIdAsync(int id)
     {
@@ -130,7 +131,7 @@ public class ProdutosController : ControllerBase
     [ProducesResponseType(StatusCodes.Status201Created)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
     [ProducesDefaultResponseType]
-    public async Task <ActionResult<ProdutoDTO>> CadastrarProduto([FromBody] ProdutoDTO produtoDto)
+    public async Task<ActionResult<ProdutoDTO>> CadastrarProduto([FromBody] ProdutoDTO produtoDto)
     {
         if (produtoDto is null)
             return BadRequest();
@@ -143,7 +144,7 @@ public class ProdutosController : ControllerBase
         var novoProdutoDTO = _mapper.Map<ProdutoDTO>(novoProduto);
 
         _cache.Set($"Produto_{novoProdutoDTO.ProdutoId}", novoProdutoDTO, TimeSpan.FromMinutes(5));
-        _cache.Remove("ListaProdutos"); 
+        _cache.Remove("ListaProdutos");
 
         return new CreatedAtRouteResult("ObterProduto", new { id = novoProdutoDTO.ProdutoId }, novoProdutoDTO);
     }
@@ -154,38 +155,38 @@ public class ProdutosController : ControllerBase
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
     [ProducesDefaultResponseType]
-    public async Task <ActionResult<ProdutoDTOUpdateResponse>> AtualizarPatchProduto(int id, JsonPatchDocument<ProdutoDTOUpdateRequest> patchProdutoDTO)
+    public async Task<ActionResult<ProdutoDTOUpdateResponse>> AtualizarPatchProduto(int id, JsonPatchDocument<ProdutoDTOUpdateRequest> patchProdutoDTO)
     {
         if (patchProdutoDTO is null || id <= 0)
             return BadRequest();
 
         var produto = await _unitOfWork.ProdutoRepository.GetAsync(c => c.ProdutoId == id);
         if (produto == null)
-          return NotFound();
+            return NotFound();
 
         var produtoUpdateRequest = _mapper.Map<ProdutoDTOUpdateRequest>(produto);
-        
-        patchProdutoDTO.ApplyTo(produtoUpdateRequest,ModelState);
+
+        patchProdutoDTO.ApplyTo(produtoUpdateRequest, ModelState);
 
         if (!ModelState.IsValid || TryValidateModel(produtoUpdateRequest))
             return BadRequest(ModelState);
 
-        _mapper.Map(produtoUpdateRequest,produto);
+        _mapper.Map(produtoUpdateRequest, produto);
 
         _unitOfWork.ProdutoRepository.Update(produto);
         await _unitOfWork.CommitAsync();
 
-        _cache.Set($"Produto_{id}", patchProdutoDTO, TimeSpan.FromMinutes(5));
+        _cache.Set($"Produto_{id}", produto, TimeSpan.FromMinutes(5));
         _cache.Remove("ListaProdutos");
 
-        return Ok(_mapper.Map<ProdutoDTOUpdateResponse>(produto));    
+        return Ok(_mapper.Map<ProdutoDTOUpdateResponse>(produto));
     }
 
     [HttpPut("{id:int}")]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
     [ProducesDefaultResponseType]
-    public async Task <ActionResult<ProdutoDTO>> AtualizarPutProduto(int id, ProdutoDTO produtoDTO)
+    public async Task<ActionResult<ProdutoDTO>> AtualizarPutProduto(int id, ProdutoDTO produtoDTO)
     {
         if (id != produtoDTO.ProdutoId)
             return BadRequest();
@@ -205,11 +206,11 @@ public class ProdutosController : ControllerBase
 
     [Authorize(AuthenticationSchemes = "Bearer", Policy = "Admin-Geral")]
     [HttpDelete("{id:int}")]
-    public async Task <ActionResult<ProdutoDTO>> DeleteProduto(int id)
+    public async Task<ActionResult<ProdutoDTO>> DeleteProduto(int id)
     {
         var produto = await _unitOfWork.ProdutoRepository.GetAsync(p => p.ProdutoId == id);
         if (produto is null)
-            return Ok($"Produto de id = {id} foi excluído");
+            return StatusCode(StatusCodes.Status404NotFound, ("Produto não encontrado"));
 
         var produtoDeletado = _unitOfWork.ProdutoRepository.Delete(produto);
         await _unitOfWork.CommitAsync();
